@@ -1,10 +1,10 @@
 [tool.poetry]
 name = "PolyMaG_gendiff"
-version = "0.1.0"
+version = "0.2.0"
 description = ""
 authors = ["Maxim P"]
 packages = [
-    {include = "gendiff" },
+    { include = "gendiff" },
 ]
 
 [tool.poetry.scripts]

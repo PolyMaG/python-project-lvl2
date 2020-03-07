@@ -1,0 +1,1 @@
+[![asciicast](https://asciinema.org/a/s2Cu8m36fLAw35TLGnHUcTpjG.svg)](https://asciinema.org/a/s2Cu8m36fLAw35TLGnHUcTpjG)
