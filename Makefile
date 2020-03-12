@@ -4,4 +4,7 @@ install:
 lint:
 		poetry run flake8 gendiff
 
-.PHONY: install lint
+test:
+		poetry run pytest --cov=gendiff tests/ --cov-report xml
+
+.PHONY: install lint test

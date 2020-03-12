@@ -4,5 +4,3 @@ dist/
 *.pyc
 .venv/
 .vscode/
-file1.json
-file2.json
