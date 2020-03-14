@@ -4,4 +4,8 @@
 
 [![Build Status](https://travis-ci.com/PolyMaG/python-project-lvl2.svg?branch=master)](https://travis-ci.com/PolyMaG/python-project-lvl2)
 
+json-files comparison
 [![asciicast](https://asciinema.org/a/s2Cu8m36fLAw35TLGnHUcTpjG.svg)](https://asciinema.org/a/s2Cu8m36fLAw35TLGnHUcTpjG)
+
+yml-files comparison
+[![asciicast](https://asciinema.org/a/bDK5UAI5dmc6sRAeBo0cSODu4.svg)](https://asciinema.org/a/bDK5UAI5dmc6sRAeBo0cSODu4)
