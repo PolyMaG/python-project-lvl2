@@ -1,24 +1,15 @@
 import json
+import yaml
+import os
 
 
-def get_paths(first_file, second_file):
-    first_file = json.load(open(first_file))
-    second_file = json.load(open(second_file))
-    return first_file, second_file
-
-
-def generate_diff(first_file, second_file):
-    result = []
-    for k, v in first_file.items() & second_file.items():
-        result.append('  ' + k + ': ' + str(v))
-    for k in first_file.keys() & second_file.keys():
-        if first_file.get(k) != second_file.get(k):
-            result.append('+ ' + k + ': ' + str(second_file.get(k)))
-            result.append('- ' + k + ': ' + str(first_file.get(k)))
-    for k in first_file.keys() - second_file.keys():
-        result.append('- ' + k + ': ' + first_file.get(k))
-    for k in second_file.keys() - first_file.keys():
-        result.append('+ ' + k + ': ' + str(second_file.get(k)))
-
-    result = '{\n' + '\n'.join(result) + '\n}'
-    return result
+def get_files_data(first_file, second_file):
+    first_file_name, first_file_extension = os.path.splitext(first_file)
+    second_file_name, second_file_extension = os.path.splitext(second_file)
+    if first_file_extension and second_file_extension == '.json':
+        first_file_data = json.load(open(first_file))
+        second_file_data = json.load(open(second_file))
+    elif first_file_extension and second_file_extension == '.yml':
+        first_file_data = yaml.safe_load(open(first_file))
+        second_file_data = yaml.safe_load(open(second_file))
+    return first_file_data, second_file_data
