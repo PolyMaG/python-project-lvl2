@@ -9,3 +9,6 @@ json-files comparison
 
 yml-files comparison
 [![asciicast](https://asciinema.org/a/bDK5UAI5dmc6sRAeBo0cSODu4.svg)](https://asciinema.org/a/bDK5UAI5dmc6sRAeBo0cSODu4)
+
+nested files comparison
+[![asciicast](https://asciinema.org/a/PhObV1Wx1gnkrFQZRS6kpYG6G.svg)](https://asciinema.org/a/PhObV1Wx1gnkrFQZRS6kpYG6G)

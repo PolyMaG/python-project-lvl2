@@ -1,12 +1,8 @@
 import json
 import yaml
 import os
-from gendiff.parsers import (
-    get_equal_items,
-    get_changed_items,
-    get_added_items,
-    get_removed_items
-)
+from gendiff.parser import build_ast
+from gendiff.render import render_ast
 
 
 def generate_diff(first_file, second_file):
@@ -18,22 +14,9 @@ def generate_diff(first_file, second_file):
     elif first_file_extension and second_file_extension == '.yml':
         first_file_data = yaml.safe_load(open(first_file))
         second_file_data = yaml.safe_load(open(second_file))
+    else:
+        print('Wrong file format')
 
-    equal_items = get_equal_items(first_file_data, second_file_data)
-    changed_added_items, changed_removed_items = get_changed_items(
-        first_file_data,
-        second_file_data,
-    )
-    added_items = get_added_items(first_file_data, second_file_data)
-    removed_items = get_removed_items(first_file_data, second_file_data)
-
-    diff = (
-        '{\n' +
-        ''.join(equal_items) + '\n' +
-        ''.join(changed_added_items) + '\n' +
-        ''.join(changed_removed_items) + '\n' +
-        ''.join(removed_items) + '\n' +
-        ''.join(added_items) +
-        '\n}'
-    )
-    return diff
+    ast = build_ast(first_file_data, second_file_data)
+    diff = render_ast(ast)
+    return '{\n' + diff + '}'
