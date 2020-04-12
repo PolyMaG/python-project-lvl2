@@ -12,3 +12,6 @@ yml-files comparison
 
 nested files comparison
 [![asciicast](https://asciinema.org/a/PhObV1Wx1gnkrFQZRS6kpYG6G.svg)](https://asciinema.org/a/PhObV1Wx1gnkrFQZRS6kpYG6G)
+
+plain format
+[![asciicast](https://asciinema.org/a/dKo6V8cHu33ACEBfEHyzOipwG.svg)](https://asciinema.org/a/dKo6V8cHu33ACEBfEHyzOipwG)
