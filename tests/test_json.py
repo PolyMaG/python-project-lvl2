@@ -5,7 +5,7 @@ file = open('./tests/fixtures/expected_json.txt', 'r')
 EXPECTED = file.read()
 
 
-def test_plain_json_files():
+def test_json_files():
     actual = generate_diff(
         'json',
         './tests/fixtures/before.json',

@@ -1,8 +1,8 @@
 {
     common: {
         setting1: Value 1
-      - setting2: 200
         setting3: True
+      - setting2: 200
       - setting6: {
             key: value
         }
