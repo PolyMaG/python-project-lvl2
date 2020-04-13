@@ -15,3 +15,6 @@ nested files comparison
 
 plain format
 [![asciicast](https://asciinema.org/a/dKo6V8cHu33ACEBfEHyzOipwG.svg)](https://asciinema.org/a/dKo6V8cHu33ACEBfEHyzOipwG)
+
+json format
+[![asciicast](https://asciinema.org/a/tiXGziSgTe511KnpigTTvT4ZZ.svg)](https://asciinema.org/a/tiXGziSgTe511KnpigTTvT4ZZ)

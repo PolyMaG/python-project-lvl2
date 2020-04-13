@@ -4,6 +4,7 @@ import os
 from gendiff.parser import build_ast
 from gendiff.formatters.jsontxt_formatter import to_jsontxt_format
 from gendiff.formatters.plain_formatter import to_plain_format
+from gendiff.formatters.json_formatter import to_json_format
 
 
 def get_file_data(first_file, second_file):
@@ -27,4 +28,6 @@ def generate_diff(format, first_file, second_file):
         diff = '{\n' + to_jsontxt_format(ast) + '}'
     elif format == 'plain':
         diff = to_plain_format(ast)
+    elif format == 'json':
+        diff = to_json_format(ast)
     return diff
