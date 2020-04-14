@@ -1,4 +1,4 @@
-from gendiff.generate_diff import generate_diff
+from gendiff.diff import generate_diff
 
 
 file = open('./tests/fixtures/expected_flat.txt', 'r')

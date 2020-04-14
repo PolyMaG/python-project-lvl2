@@ -5,11 +5,11 @@ file = open('./tests/fixtures/expected_nested.txt', 'r')
 EXPECTED = file.read()
 
 
-def test_nested_json_files():
+def test_nested_yml_files():
     actual = generate_diff(
         'jsontxt',
-        './tests/fixtures/before.json',
-        './tests/fixtures/after.json'
+        './tests/fixtures/before.yml',
+        './tests/fixtures/after.yml'
     )
     assert EXPECTED == actual
 

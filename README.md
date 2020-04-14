@@ -1,20 +1,41 @@
+# Difference generator
 [![Test Coverage](https://api.codeclimate.com/v1/badges/b7bcfe5afa1f76f97e35/test_coverage)](https://codeclimate.com/github/PolyMaG/python-project-lvl2/test_coverage)
-
 [![Maintainability](https://api.codeclimate.com/v1/badges/b7bcfe5afa1f76f97e35/maintainability)](https://codeclimate.com/github/PolyMaG/python-project-lvl2/maintainability)
-
 [![Build Status](https://travis-ci.com/PolyMaG/python-project-lvl2.svg?branch=master)](https://travis-ci.com/PolyMaG/python-project-lvl2)
 
-json-files comparison
-[![asciicast](https://asciinema.org/a/s2Cu8m36fLAw35TLGnHUcTpjG.svg)](https://asciinema.org/a/s2Cu8m36fLAw35TLGnHUcTpjG)
+Difference generator is a CLI-utility that compares two configuration files.
+## Installation
+To install the utility use:
+```
+pip install -i https://test.pypi.org/simple/ polymag-gendiff
+```
+You may also need to install some extra packages (e.g. PyYaml). For this case use:
+```
+pip install --no-cache-dir --index-url https://test.pypi.org/simple --extra-index-url https://pypi.org/simple polymag-gendiff
+```
+## Usage
+To run the utility after installing type:
+`gendiff first_file second_file`
+Files formats can be either *.json* or *.yml*
+The result of comparison can also be displayed in different formats.
+To choose format add optional argument `--format`:
+- **_json_** for json format
+- **_plain_** for plain format
+- **_jsontxt_** for json-like txt format
 
-yml-files comparison
-[![asciicast](https://asciinema.org/a/bDK5UAI5dmc6sRAeBo0cSODu4.svg)](https://asciinema.org/a/bDK5UAI5dmc6sRAeBo0cSODu4)
+E.g. `gendiff --format jsontxt first_file second_file`
+It is **_jsontxt_** output format used by default.
+You can also call `gendiff -h` for some __help__ information
 
-nested files comparison
-[![asciicast](https://asciinema.org/a/PhObV1Wx1gnkrFQZRS6kpYG6G.svg)](https://asciinema.org/a/PhObV1Wx1gnkrFQZRS6kpYG6G)
+Some examples are shown below:
+##### Flat _.json_ and _.yml_ files comparison
+[![asciicast](https://asciinema.org/a/L393MLIZw8WI10bmLJSfQOgcI.svg)](https://asciinema.org/a/L393MLIZw8WI10bmLJSfQOgcI)
 
-plain format
-[![asciicast](https://asciinema.org/a/dKo6V8cHu33ACEBfEHyzOipwG.svg)](https://asciinema.org/a/dKo6V8cHu33ACEBfEHyzOipwG)
+##### Nested _.json_ and _.yml_ files comparison with **json-like txt** output format
+[![asciicast](https://asciinema.org/a/HkrSxLEjIk2MpqawXwsXjZlVl.svg)](https://asciinema.org/a/HkrSxLEjIk2MpqawXwsXjZlVl)
 
-json format
-[![asciicast](https://asciinema.org/a/tiXGziSgTe511KnpigTTvT4ZZ.svg)](https://asciinema.org/a/tiXGziSgTe511KnpigTTvT4ZZ)
+##### **_Plain_** output format
+[![asciicast](https://asciinema.org/a/mEPNgBqQfQuUFT5soDydyFfdf.svg)](https://asciinema.org/a/mEPNgBqQfQuUFT5soDydyFfdf)
+
+##### **_Json_** output format
+[![asciicast](https://asciinema.org/a/wS2cmykCiixY8hPDJHSwcaucU.svg)](https://asciinema.org/a/wS2cmykCiixY8hPDJHSwcaucU)

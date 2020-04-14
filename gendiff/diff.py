@@ -2,7 +2,7 @@ import json
 import yaml
 import os
 from gendiff.parser import build_ast
-from gendiff.formatters.choose_formatter import to_format
+from gendiff.formatters.choose_formatter import choose_format
 
 
 def get_file_data(first_file, second_file):
@@ -22,5 +22,5 @@ def get_file_data(first_file, second_file):
 def generate_diff(format, first_file, second_file):
     first_file_data, second_file_data = get_file_data(first_file, second_file)
     ast = build_ast(first_file_data, second_file_data)
-    formatted_diff = to_format(format, ast)
+    formatted_diff = choose_format(format, ast)
     return formatted_diff
