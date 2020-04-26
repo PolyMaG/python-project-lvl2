@@ -16,22 +16,22 @@ pip install --no-cache-dir --index-url https://test.pypi.org/simple --extra-inde
 ## Usage
 To run the utility after installing type:
 `gendiff first_file second_file`
-Files formats can be either *.json* or *.yml*
+Files formats can be either *.json* or *.yml / .yaml*
 The result of comparison can also be displayed in different formats.
 To choose format add optional argument `--format`:
 - **_json_** for json format
 - **_plain_** for plain format
-- **_jsontxt_** for json-like txt format
+- **_default_** for json-like txt format. This format is used as a default.
 
-E.g. `gendiff --format jsontxt first_file second_file`
-It is **_jsontxt_** output format used by default.
-You can also call `gendiff -h` for some __help__ information
+E.g. `gendiff --format plain first_file second_file`
+
+You can always call `gendiff -h` for some __help__ information
 
 Some examples are shown below:
 ##### Flat _.json_ and _.yml_ files comparison
 [![asciicast](https://asciinema.org/a/L393MLIZw8WI10bmLJSfQOgcI.svg)](https://asciinema.org/a/L393MLIZw8WI10bmLJSfQOgcI)
 
-##### Nested _.json_ and _.yml_ files comparison with **json-like txt** output format
+##### Nested _.json_ and _.yml_ files comparison with **default** output format
 [![asciicast](https://asciinema.org/a/HkrSxLEjIk2MpqawXwsXjZlVl.svg)](https://asciinema.org/a/HkrSxLEjIk2MpqawXwsXjZlVl)
 
 ##### **_Plain_** output format

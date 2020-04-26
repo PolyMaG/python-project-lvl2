@@ -1,5 +1,5 @@
 import json
 
 
-def to_json_format(ast):
+def format(ast):
     return json.dumps(ast)
