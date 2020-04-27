@@ -9,14 +9,14 @@ def build_ast(first_data, second_data):
     removed_items = first_data.keys() - second_data.keys()
     added_items = second_data.keys() - first_data.keys()
     for item in common_items:
-        first_value = first_data[item]
-        second_value = second_data[item]
-        if isinstance(first_value, dict) and isinstance(second_value, dict):
-            ast[item] = (NESTED, build_ast(first_value, second_value))
-        elif first_value == second_value:
-            ast[item] = (EQUAL, first_value)
+        value1 = first_data[item]
+        value2 = second_data[item]
+        if isinstance(value1, dict) and isinstance(value2, dict):
+            ast[item] = (NESTED, build_ast(value1, value2))
+        elif value1 == value2:
+            ast[item] = (EQUAL, value1)
         else:
-            ast[item] = (MODIFIED, (first_value, second_value))
+            ast[item] = (MODIFIED, (value1, value2))
     for item in removed_items:
         ast[item] = (REMOVED, first_data[item])
     for item in added_items:
