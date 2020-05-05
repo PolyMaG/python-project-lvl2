@@ -19,7 +19,7 @@ To run the utility after installing type:
 
 Files formats can be either *.json* or *.yml / .yaml*.
 
-The result of comparison can also be displayed in different formats. To choose format add optional argument `--format`:
+The result of comparison can also be displayed in different formats. To choose format add an optional argument `--format`:
 - **_json_** for json format
 - **_plain_** for plain format
 - **_default_** for json-like txt format. This format is used as a default.
@@ -29,10 +29,9 @@ E.g. `gendiff --format plain first_file second_file`
 You can always call `gendiff -h` for some __help__ information.
 
 
-
 Some examples are shown below:
 ##### Installation and flat _.json_ and _.yaml_ files comparison
-[![asciicast](https://asciinema.org/a/XRoBnGZrgcrbVSWF2ELRuufPJ.svg)](https://asciinema.org/a/XRoBnGZrgcrbVSWF2ELRuufPJ)
+[![asciicast](https://asciinema.org/a/bWW1ANaDLV5MhSOb5TJvtzynv.svg)](https://asciinema.org/a/bWW1ANaDLV5MhSOb5TJvtzynv)
 
 ##### Nested _.json_ and _.yml_ files comparison with _default_ output format
 [![asciicast](https://asciinema.org/a/UgqbrmZfm5jE2mClos2RScJXV.svg)](https://asciinema.org/a/UgqbrmZfm5jE2mClos2RScJXV)
