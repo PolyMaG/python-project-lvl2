@@ -1,24 +1,25 @@
-import json
-import yaml
-import os
-import sys
-from gendiff.parser import build_ast
+TYPES = (NESTED, EQUAL, MODIFIED, REMOVED, ADDED) = (
+    'nested', 'equal', 'modified', 'removed', 'added'
+)
 
 
-def get_file_data(file):
-    file_name, file_extension = os.path.splitext(file)
-    if file_extension == '.json':
-        file_data = json.load(open(file))
-    elif file_extension == '.yml' or file_extension == '.yaml':
-        file_data = yaml.safe_load(open(file))
-    else:
-        sys.exit('Wrong file format. Can use only .json or .yml/.yaml files')
-    return file_data
-
-
-def generate_diff(first_file, second_file, format_diff):
-    first_file_data = get_file_data(first_file)
-    second_file_data = get_file_data(second_file)
-    ast = build_ast(first_file_data, second_file_data)
-    formatted_diff = format_diff(ast)
-    return formatted_diff
+def build(first_data, second_data):
+    diff = {}
+    common_items = first_data.keys() & second_data.keys()
+    removed_items = first_data.keys() - second_data.keys()
+    added_items = second_data.keys() - first_data.keys()
+    for item in common_items:
+        value1 = first_data[item]
+        value2 = second_data[item]
+        if isinstance(value1, dict) and isinstance(value2, dict):
+            value = (NESTED, build(value1, value2))
+        elif value1 == value2:
+            value = (EQUAL, value1)
+        else:
+            value = (MODIFIED, (value1, value2))
+        diff[item] = value
+    for item in removed_items:
+        diff[item] = (REMOVED, first_data[item])
+    for item in added_items:
+        diff[item] = (ADDED, second_data[item])
+    return diff

@@ -1,11 +1,13 @@
-import gendiff.parser as diff
+import gendiff.diff as diff
 
 
 def format_obj(value, tab):
     for key, value in value.items():
-        return '{}\n{}{}: {}\n{}{}'.format(
-            '{', ' ' * (tab + 8), key, value, ' ' * (tab + 4), '}'
-            )
+        return '{{\n    {tab}{key}: {value}\n{tab}}}'.format(
+            tab=' ' * (tab + 4),
+            key=key,
+            value=value,
+        )
 
 
 def format_val(value, tab):
@@ -15,25 +17,34 @@ def format_val(value, tab):
         return value
 
 
-def pre_format(ast, tab=0):
-    result = ''
+def make_strings(ast, tab=0):
+    strings = []
     for key, (status, value) in sorted(ast.items()):
+        def make_line(prefix, value_to_show):
+            return '  {tab}{prefix} {key}: {value}'.format(
+                tab=' ' * tab,
+                prefix=prefix,
+                key=key,
+                value=format_val(value_to_show, tab),
+            )
         if status == diff.NESTED:
-            result += '    {}{}: {}\n{}{}{}\n'.format(
-                ' ' * tab, key, '{', pre_format(value, tab + 4), ' ' * (tab + 4), '}' # noqa E501
-                )
+            strings.append('    {tab}{key}: {{\n{value}\n    {tab}}}'.format(
+                tab=' ' * tab,
+                key=key,
+                value=make_strings(value, tab + 4),
+            ))
         elif status == diff.EQUAL:
-            result += '    {}{}: {}\n'.format(' ' * tab, key, format_val(value, tab)) # noqa E501
+            strings.append(make_line(' ', value))
         elif status == diff.ADDED:
-            result += '  {}+ {}: {}\n'.format(' ' * tab, key, format_val(value, tab)) # noqa E501
+            strings.append(make_line('+', value))
         elif status == diff.REMOVED:
-            result += '  {}- {}: {}\n'.format(' ' * tab, key, format_val(value, tab)) # noqa E501
+            strings.append(make_line('-', value))
         elif status == diff.MODIFIED:
             old, new = value
-            result += '  {}+ {}: {}\n'.format(' ' * tab, key, format_val(new, tab)) # noqa E501
-            result += '  {}- {}: {}\n'.format(' ' * tab, key, format_val(old, tab)) # noqa E501
-    return result
+            strings.append(make_line('+', new))
+            strings.append(make_line('-', old))
+    return '\n'.join(strings)
 
 
 def format(ast):
-    return '{\n' + pre_format(ast) + '}'
+    return '{\n' + make_strings(ast) + '\n}'

@@ -1,10 +1,11 @@
 import json
 import gendiff.format as format
-from gendiff.diff import generate_diff
+from gendiff.gendiff import generate_diff
 
 
 def test_json_format():
-    expected = json.load(open('./tests/fixtures/expected.json'))
+    with open('./tests/fixtures/expected.json') as fixture:
+        expected = json.load(fixture)
     assert expected == json.loads(generate_diff(
         './tests/fixtures/before.json',
         './tests/fixtures/after.json',
